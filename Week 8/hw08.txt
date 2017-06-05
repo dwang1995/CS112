@@ -1,0 +1,51 @@
+Dayuan Wang
+hw08.txt
+
+(1) (a) size of the tree: 11
+    (b) depth of the node 31: 3
+    (c) height: 3
+    (d) length of the path from 11 to 49: 3
+    (e) list all the leaf nodes: 5, 10, 31, 49
+
+(2) (a)                     11
+                    /               \
+                   6                19
+                 /    \            /   \
+                 4    8           17   43
+                 \   / \          /    / \ 
+                 5  7   10       15   31  49
+                                /  \
+                               12   16
+                                \
+                                 13
+    (b) when the key x is: 19 < x < 31; it is able to insert to the left of 31 in the original tree
+
+(3) (a)               31
+                    /   \
+                   6     43
+                  / \     \
+                 4   8     49
+                 \    \
+                 5    10
+    
+    (b)           8
+                 /  \
+                6    43
+               /    /  \
+              4     31  49
+              \
+               5
+(4) (a) H = log(N + 1)/log(2) - 1
+    (b) N = 2^0 + 2^1 + ... + 2^H = 2^(H+1) - 1
+
+(5) (a) D C B A
+        A B C D
+        A B D C
+        D C A B 
+        D A B C 
+    (b) D B F C A G E 
+        D F B A C E G
+        D F B C A E G 
+        D F B C A G E
+        D B A C F E G
+    (c) 2^(N-1)

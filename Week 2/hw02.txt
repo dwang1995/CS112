@@ -1,0 +1,38 @@
+name: Dayuan Wang
+
+1. there are multiple error in this program:
+	you can not assign an input as f(x); you have to say what is the type of the input.
+	there is no return value, it much have a reture value with a integer type.
+	you need "{}" after if statement.
+	you need to add a ";" after the print statement. 
+2. This is a inifinite loop:
+	it will print out:
+	3.1415
+	10
+	10
+	..... and will never stop
+3. This will print out:
+	1
+	2
+	4
+	8
+4. This will print out:
+	2
+	2	
+	6	
+	4
+	5
+	6
+5. for each location:
+	location 1 = all
+	location 2 = local in this method
+	location 3 = local in this method
+	location 4 = local in this method
+	location 5 = local in the loop
+	location 6 = local in this method
+	location 7 = local in the loop
+	location 8 = local in this method
+	location 9 ( is this talking about int G=2? if so) = all
+	
+	
+	

@@ -1,0 +1,8 @@
+public class Haiku {
+    public static void main(String[] args){
+        String author = "Jack Kerouac";
+        int year = 1968;
+        System.out.println("\n\tArms folded\n\tTo the moon\n\tAmong the cows."+
+                               "\n\n\t\t-" + author + "(" + year +")");
+    }
+}

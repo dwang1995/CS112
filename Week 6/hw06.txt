@@ -1,0 +1,21 @@
+Dayuan Wang
+(1) should print out:
+F
+i
+Folks
+Hithere
+
+(2) should print out:
+7
+6
+8
+13
+24
+5
+
+(3) should print out:
+4 3
+7 5
+9 7
+head-> 4-> 3-> 5-> 9-> 9-> .
+head -> 4-> 9-> 9-> .

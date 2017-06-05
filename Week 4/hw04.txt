@@ -1,0 +1,24 @@
+Dayuan Wang
+hw04.txt
+
+1. False
+
+2. it will be:
++   +
+| 7 |
+| 9 |
+| 2 |
+| 8 |
+| 1 |
+| 3 |
+| 7 |
++---+
+
+3. In the first for loop, it push every element onto a stack. The left most element in the array
+is on the bottom of the stack.
+In the second loop, it will pop every element in the stack and put it back to the array.
+After all, the final array will get a backwards array compare to the initial array.
+
+4. It will get the sum of every element in the array and prints out. 
+
+5. (4)

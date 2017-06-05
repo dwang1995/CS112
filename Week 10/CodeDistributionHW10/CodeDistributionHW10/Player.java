@@ -1,0 +1,145 @@
+/*
+ * File: Player.java
+ * Purpose: This is the Artifical Intelligent Part of the game
+ *          In this file, the AI will calculate the best next move, 
+ *          And It will choose that move
+ * Date: 4/26/2016
+ * Class: CS 112
+ *
+ * Author: Dayuan Wang
+ */
+
+
+public class Player{
+    // this is the winning number for the evaluation score;
+    // the losing game will just be -inf
+    public static final int Inf = 100000;
+    
+    // this is the value that limits the searching depth;
+    // the greater it becomes, the better AI we will get;
+    // Now I am going to set the value to 5; just for a better running speed; but it is really really STUPID now 
+    // This AI is really stupid right now; if you set this number to 6 it will be way smarter
+    // when I set the depth for AI to 6 it will take about 30 seconds to calculate, so I set the AI depth to 5 just to make it 
+    // run faster, but it is pretty stupid at this level. 
+    public static final int magicNum = 6;
+    
+    // this is the method to choose the move
+    public Move chooseMove(Graph G){
+        int max = -100001;
+        int m=0;
+        int n=1;
+        Move best = new Move(m,n);
+        for(int i=0; i< G.N; ++i){
+            for(int j= i+1; j< G.N; ++j){
+                if( j != i && G.isEdge(i,j) == false){
+                    G.addEdge(i,j,-1);
+                    //G.addEdge(i,j,1);
+                    int val = minMax(G, 1, -Inf , Inf, magicNum);
+                    if(val > max){
+                        best = new Move(i,j); 
+                        max = val;
+                    }
+                    G.removeEdge(i,j);
+                }
+            }
+        }
+        return best;
+    }
+    // this is the helper method to choose the move
+    // I am going to use the minMax search to try to find the best move;
+    // it is same with the psudo code provided on the lecture slides;
+    public int minMax(Graph G, int depth, int alpha, int beta, int D){
+        if(G.isCycleOfLength(3,1)== true || G.isCycleOfLength(3,-1) == true || depth == D ){
+            int val = eval(G);
+            return val;
+        }
+        else if(depth % 2 == 0){
+            int val = -Inf;
+            for(int i = 0; i< G.N; ++ i){
+                for(int j = i+1; j< G.N; ++j){
+                    if(j != i && G.isEdge(i,j) == false){
+                        alpha = Math.max(alpha,val);
+                        if(beta < alpha) break;
+                        G.addEdge(i,j,-1);
+                        //G.addEdge(i,j,1);
+                        val = Math.max(val, minMax(G,depth + 1, alpha, beta, D));
+                        G.removeEdge(i,j);
+                    }
+                }
+            }
+            return val;
+        }
+        else{
+            int val = Inf;
+            for(int i = 0; i< G.N; ++i){
+                for(int j = 0; j < G.N; ++j){
+                    if(j != i && G.isEdge(i,j) == false){
+                        beta = Math.min(beta, val);
+                        if(beta< alpha) break;                      
+                        G.addEdge(i,j,1);
+                        //G.addEdge(i,j,-1);
+                        val = Math.min(val, minMax(G,depth + 1, alpha, beta, D));
+                        G.removeEdge(i,j);
+                    }
+                }
+            }
+            return val;
+        }
+    }
+    
+    // this is the method to evaluate the Graph;
+    // if it is a winning Graph for Blue, return Inf
+    // if it is a winning Graph for Red, return -Inf
+    // else calculate the number of vertices which have more than one edge connected
+    // for both of the color
+    // return the difference between them 
+    public static int eval(Graph G){
+        if(G.isCycleOfLength(3,1) == true){
+            return Inf;
+        }
+        if(G.isCycleOfLength(3,-1) == true){
+            return -Inf;
+        }
+        else{
+            int B = 0;
+            int R = 0;
+            int R_1 = 0;
+            int B_1 = 0;
+            for(int u = 0; u< G.N; ++u){
+                for(int v=0; v<G.N; ++v){
+                    if(v != u){
+                        if(G.getEdge(u,v) == 1){
+                            R_1 +=1;
+                        }
+                        if(G.getEdge(u,v) == -1){
+                            B_1 += 1;
+                        }
+                    }}
+                if(R_1 > 1){
+                    R +=1;
+                }
+                if(B_1 > 1){
+                    B+=1;
+                }
+                R_1 = 0;
+                B_1 = 0;
+            }
+            //System.out.println(R+" "+B);
+            int val = R-B;
+            return val;
+        }
+    }
+    
+    public static void main(String[] args){
+        Graph A = new Graph(6);
+        A.addEdge(0,1,-1);
+        A.addEdge(1,2,-1);
+        A.addEdge(2,3,-1);
+        A.addEdge(4,3,-1);
+        A.addEdge(4,5,-1);
+        A.addEdge(0,5,-1);
+        A.addEdge(4,1,1);
+        A.addEdge(4,0,1);
+        System.out.println(eval(A));
+    }
+}

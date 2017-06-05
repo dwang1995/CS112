@@ -1,0 +1,33 @@
+Dayuan Wang
+
+Exercise one:
+(a)The best hashcode for me is the: Naive add and theAdd Lin Cong. Both of them act in the similar proformence.
+(b)The "industrial-strength" hash function does not act as good as others. I don't think it is neccessary to have them for me texts.
+(C)The Naive add is the simplest one and also the one proformed the best. 
+
+Exervise two:
+(a)When M = 144; LC Multiplier = 2:
+The Mean Lookup has the value is 14.222 
+The Optimal Lookup coat has the value 7.19
+the standar deviation: 3.74
+The buckets does not have the similar sizes
+Because the M is not close to N, so the bucket length also goes long.
+
+(b)When M = 144; LC Multiplier = 12:
+The mean loopup is 69
+the Optimal lookup is 7.19
+the standard deviation: 7.1
+A lot of the bucket has no value in it.
+Because we are using a non prime number as LC Multiplier, there is impossible to put the value into some of the bucket. 
+
+(C)When M = 479; LC Multiplier = 59:
+The mean lookup is 1.65
+The Optimal lookup cost is 1.
+the standard deviation is 1.14
+The is a really good hash value. almost all of them have the close size.
+Because my M is same with the N and M is a prime number.
+
+Exercise 3:
+(a)if I put the word dd,the word 2222, and the word o2, these three value will be in the same bucket.
+(b)when I change the M and LC multiplier to 13 and 5, my sequence of word does not appear in any of the bucket.
+(c)When I use the industry strength it will solve the problem. it will adjust the bucket length evenly

@@ -1,0 +1,43 @@
+/*
+ * File: Age.java
+ * Author: Dayuan Wang
+ * Date: 1.21.2016
+ * This is HW 01, Problem B.1
+*/
+public class Age{
+    public static void main(String[] args){
+        int ageInSeconds = 1234567890;
+        System.out.println("Age in seconds (input): " + ageInSeconds + "\n");
+        double ageInMinutes = ageInSeconds/(double)60;
+        double ageInHours = ageInMinutes/(double)60;
+        double ageInDays = ageInHours/(double)24;
+        double ageInMonths = ageInDays/(double)30;
+        double ageInYears = ageInDays/(double)365;
+        System.out.printf("The age in years is %.2f\n",ageInYears);
+        System.out.printf("The age in months is %.2f\n",ageInMonths);
+        System.out.printf("The age in days is %.2f\n",ageInDays);
+        // I will take the integer part of the number first
+        // get only the decimal part, times what I need to do to get the low unit
+        // and do the same thing again
+        int Years_in_int = (int)ageInYears;
+        double Years_left_de = (ageInYears) - Years_in_int;
+        double Month_as_whole = Years_left_de * (365/30);
+        int Month_in_int = (int)Month_as_whole;
+        double Month_left_de = (double)Month_as_whole - (double)Month_in_int;
+        double Days_as_whole = Month_left_de * (double)30;
+        int Days_in_int = (int)Days_as_whole;
+        double Days_left_de = Days_as_whole - Days_in_int;
+        double Hours_as_whole = Days_left_de * 24;
+        int Hours_in_int = (int)Hours_as_whole;
+        double Hours_left_de = Hours_as_whole - Hours_in_int;
+        double Minutes_as_whole = Hours_left_de * 60;
+        int Minutes_in_int = (int)Minutes_as_whole;
+        double Minutes_left_de = Minutes_as_whole - Minutes_in_int;
+        double Seconds_in_de = Minutes_left_de * 60;
+        int Seconds_in_int = (int)Seconds_in_de;
+       
+        System.out.println("\nAge in years, months, days, hours, minutes, and seconds (all integers):");
+        System.out.println("\tYears: " + Years_in_int + "\n\tMonths: " + Month_in_int + "\n\tDays: " + Days_in_int + "\n\tHours: "
+                          +  Hours_in_int + "\n\tMinutes: " + Minutes_in_int + "\n\tSeconds: " + Seconds_in_int);
+    }
+}
